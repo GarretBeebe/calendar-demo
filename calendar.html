@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="calendar.css">
+</head>
+
+<body ng-app="calendarDemo" ng-controller="calendarDemoCtrl as calendar">
+
+<h1>Calendar Demo</h1>
+<h3>Selected Day: {{ calendar.selectedDay | date: 'MMM d, yyyy'}}</h3>
+<div class="calendar">
+	<div class="current-month-year">{{ calendar.currentMonth | date: 'MMMM yyyy' }}</div>
+	<div>
+		<a class="previous-month" ng-click="calendar.decrementCurrentMonth()">Previous Month</a> |
+		<a class="today" ng-click="calendar.setCurrentMonth(calendar.today);calendar.setSelectedDay(calendar.today)">Today</a> |
+		<a class="next-month" ng-click="calendar.incrementCurrentMonth()">Next Month</a>
+	</div>
+
+	<table class="calendar">
+		<tr class="cal-header">
+			<td class="cal-cell" ng-repeat="weekday in calendar.weekdays">{{weekday}}</td>
+		</tr>
+
+		<tr class="cal-row cal-dates" ng-repeat="date_row in calendar.dateRows">
+			<td class="cal-cell"
+				ng-repeat="day in date_row"
+				ng-class="{today: calendar.isToday(day), selected: calendar.isSelectedDay(day)}"
+				ng-click="calendar.setSelectedDay(day)">
+					<div class="day">{{ day | date: 'd' }}</div>
+					<div class="claim-count" ng-if="calendar.getClaimCount(day) > 0">{{calendar.getClaimCount(day)}}</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="calendar.js"></script>
+
+</body>
+</html>
+

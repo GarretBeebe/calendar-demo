@@ -1,0 +1,11 @@
+.calendar { }
+.calendar a { cursor: pointer; }
+.cal-row {  }
+.cal-header { vertical-align:bottom;}
+table.calendar { border-collapse: collapse;  border-right:1px solid #ccc; }
+.cal-cell { border:1px solid #ccc; width:50px;height:50px;overflow:hidden;text-align:center; font-size:10px;vertical-align:top;padding:2px; }
+.current-month-year { font-weight:bold; font-size:20px;}
+.cal-dates .cal-cell { cursor:pointer; }
+.cal-cell.today { background:pink; color:white;}
+.cal-cell.selected { font-weight:bold; color:red; }
+.claim-count { font-size:16px; color:#999;}
